@@ -1,0 +1,238 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+
+// Define a dark theme
+$dark-theme: mat.define-dark-theme((
+ color: (
+   primary: mat.define-palette(mat.$pink-palette),
+   accent: mat.define-palette(mat.$blue-grey-palette),
+ ),
+  // Only include `typography` and `density` in the default dark theme.
+  typography: mat.define-typography-config(),
+  density: 0,
+));
+
+// Define a light theme
+$light-theme: mat.define-light-theme((
+ color: (
+   primary: mat.define-palette(mat.$indigo-palette),
+   accent: mat.define-palette(mat.$pink-palette),
+ ),
+));
+
+// Apply the dark theme by default
+@include mat.core-theme($dark-theme);
+@include mat.button-theme($dark-theme);
+
+// Apply the light theme only when the user prefers light themes.
+@media (prefers-color-scheme: light) {
+ // Use the `-color` mixins to only apply color styles without reapplying the same
+ // typography and density styles.
+ @include mat.core-color($light-theme);
+ @include mat.button-color($light-theme);
+}
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 6.4rem;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+.block {
+  &--hidden {
+      display: none;
+  }
+  &--header {
+      background: #14539a!important;
+      padding: 1rem;
+      box-shadow: 0 2px 5px #0000004d;
+      position: fixed;
+      top: 0;
+      left: 0;
+  }
+  &--margin {
+      &-r {
+          &-10 {
+              margin-right: 1rem;
+          }
+      }
+      &-t {
+        &-15 {
+          margin-top: 1.5rem;
+        }
+      }
+      &-b {
+        &-0 {
+          margin-bottom: 0rem!important;
+        }
+        &-15 {
+          margin-bottom: 1.5rem;
+        }
+      }
+      &-auto {
+        margin: auto;
+      }
+  }
+  &--padding {
+    &-r {
+        &-10 {
+            padding-right: 1rem;
+        }
+    }
+    &-t {
+      &-15 {
+        padding-top: 1.5rem;
+      }
+    }
+    &-b {
+      &-15 {
+        padding-bottom: 1.5rem;
+      }
+    }
+}
+  &--width {
+      &-100 {
+          width: 100%;
+      }
+      &-20per100 {
+        width: 20%;
+      }
+      &-max {
+        &-50 {
+          max-width: 50%;
+        }
+        &-475 {
+          max-width: 475px;
+        }
+      }
+  }
+  &--height {
+      &-100vh {
+          height: 100vh;
+      }
+      &-200 {
+        height: 20rem;
+    }
+  }
+  &--spacer {
+    flex: 1 1 auto;
+  }
+  &--bg {
+    &-home {
+      position: fixed;
+      z-index: -1;
+      top: 0;
+      left: 0;
+    }
+  }
+  &--flex {
+    display: flex;
+    &__align {
+      &-center {
+        align-items: center;
+      }
+    }
+    &__justify {
+      &-center {
+        justify-content: center;
+      }
+    }
+    &__direction {
+      &-column {
+        flex-direction: column;
+      }
+    }
+  }
+}
+.media {
+  &--logo {
+      &-header {
+          width: 10rem;
+          height: auto;
+          object-fit: contain;
+      }
+  }
+  &--cover {
+    object-fit: cover;
+  }
+}
+.text {
+  &--white {
+    color: #fff!important;
+  }
+  &--black {
+    color: #000!important;
+  }
+  &--size {
+    &-32 {
+      font-size: 3.2rem!important;
+    }
+    &-24 {
+      font-size: 2.4rem!important;
+    }
+  }
+  &--center {
+    text-align: center;
+  }
+  &--limitLine {
+    text-align: justify;
+    overflow-y: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box!important;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    overflow-x: hidden;
+    &-1 {
+      -webkit-line-clamp: 1;
+    }
+    &-2 {
+      -webkit-line-clamp: 2;
+    }
+    &-3 {
+      -webkit-line-clamp: 3;
+    }
+    &-4 {
+      -webkit-line-clamp: 4;
+    }
+    &-5 {
+      -webkit-line-clamp: 5;
+    }
+    &-6 {
+      -webkit-line-clamp: 6;
+    }
+    &-7 {
+      -webkit-line-clamp: 7;
+    }
+    &-8 {
+      -webkit-line-clamp: 8;
+    }
+    &-9 {
+      -webkit-line-clamp: 9;
+    }
+    &-10 {
+      -webkit-line-clamp: 10;
+    }
+  }
+}

@@ -1,0 +1,67 @@
+<div class="block--flex block--flex__align-center block--flex__justify-center block--flex__direction-column block--height-100vh">
+    <h2 class="text--white text--size-24 block-width-max-50 text--center block--padding-b-15">
+        S'inscrire maintenant
+    </h2>
+    <div class="block--width-100">
+        <mat-card class="block--width-max-475 block--margin-auto">
+            <mat-card-content>
+                <form class="example-form">
+                    <mat-form-field class="block--width-100">
+                        <mat-label>Nom</mat-label>
+                        <input type="email" matInput [formControl]="nameFormControl" [errorStateMatcher]="matcher"
+                                placeholder="Entrer votre mot de  passe">
+                        <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+                        @if (nameFormControl.hasError('required')) {
+                            <mat-error>Password is <strong>required</strong></mat-error>
+                        }
+                    </mat-form-field>
+                    <mat-form-field class="block--width-100">
+                        <mat-label>Prénon</mat-label>
+                        <input type="email" matInput [formControl]="firstNameFormControl" [errorStateMatcher]="matcher"
+                                placeholder="Entrer votre mot de  passe">
+                        <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+                        @if (firstNameFormControl.hasError('required')) {
+                            <mat-error>Password is <strong>required</strong></mat-error>
+                        }
+                    </mat-form-field>
+                    <mat-form-field class="block--width-100">
+                        <mat-label>Email</mat-label>
+                        <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+                                placeholder="Ex. pat@example.com">
+                        <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+                        @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+                            <mat-error>Please enter a valid email address</mat-error>
+                        }
+                        @if (emailFormControl.hasError('required')) {
+                            <mat-error>Email is <strong>required</strong></mat-error>
+                        }
+                    </mat-form-field>
+                    <mat-form-field class="block--width-100">
+                        <mat-label>Mot de passe</mat-label>
+                        <input type="email" matInput [formControl]="passwordFormControl" [errorStateMatcher]="matcher"
+                                placeholder="Entrer votre mot de  passe">
+                        <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+                        @if (passwordFormControl.hasError('required')) {
+                            <mat-error>Password is <strong>required</strong></mat-error>
+                        }
+                    </mat-form-field>
+                    <mat-form-field class="block--width-100">
+                        <mat-label>Confirmation</mat-label>
+                        <input type="email" matInput [formControl]="confirmPasswordFormControl" [errorStateMatcher]="matcher"
+                                placeholder="Entrer votre mot de  passe">
+                        <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+                        @if (confirmPasswordFormControl.hasError('required')) {
+                            <mat-error>Password is <strong>required</strong></mat-error>
+                        }
+                    </mat-form-field>
+                    <button mat-raised-button color="primary" class="block--margin-r-10 block--width-100 block--margin-t-15">Login</button>
+                    <div class="block--margin-t-15">
+                        <p class="text--center">
+                            Vous avez déjà un compte? <a [routerLink]="['/login']" color="primary" class="block--margin-r-10">Se connecter</a>
+                        </p>
+                    </div>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

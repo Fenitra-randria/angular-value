@@ -1,0 +1,17 @@
+<main class="main">
+  <header>
+    <mat-toolbar color="primary" class="block--header">
+      <h1>
+        <span class="block--hidden">Angular</span>
+        <a [routerLink]="['/']">
+          <img class="media--logo-header" src="assets/img/logo/logo-nav.png" alt="">
+        </a>
+      </h1>
+      <span class="block--spacer"></span>
+      <a [routerLink]="['/login']" mat-raised-button color="primary" class="block--margin-r-10">Login</a>
+      <a [routerLink]="['/register']" mat-raised-button color="secondary">Register</a>
+    </mat-toolbar>
+  </header>
+  <img class="block--width-100 block--height-100vh media--cover block--bg-home" src="assets/img/bg/bg-home-1.jpg" alt="">
+  <router-outlet />
+</main>

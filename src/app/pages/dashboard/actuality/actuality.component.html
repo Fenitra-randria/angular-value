@@ -1,0 +1,73 @@
+<div class="container">
+  <mat-form-field class="block--width-100">
+    <mat-label>Rechercher...</mat-label>
+    <input matInput type="text" [(ngModel)]="search" (input)="makeSearch()">
+    @if (search) {
+    <button matSuffix mat-icon-button aria-label="Clear" (click)="search=''">
+      <mat-icon>close</mat-icon>
+    </button>
+    }
+  </mat-form-field>
+  <mat-form-field class="block--width-100">
+    <mat-label>Développeur</mat-label>
+    <input #input type="text" placeholder="Pick one" matInput [formControl]="myControl" [matAutocomplete]="auto"
+      (input)="filter()" (focus)="filter()">
+    <mat-autocomplete requireSelection #auto="matAutocomplete">
+      @for (option of filteredOptions; track option) {
+      <mat-option [value]="option" class="text--black">{{option}}</mat-option>
+      }
+    </mat-autocomplete>
+  </mat-form-field>
+  <div class="mat-elevation-z8 block--width-100">
+    <table mat-table [dataSource]="dataSource">
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef class="block--width-20per100"> Name </th>
+        <td mat-cell *matCellDef="let element" class="block--width-20per100">
+          <p class="text--limitLine text--limitLine-1 block--margin-b-0">
+            {{element.name}}
+          </p>
+        </td>
+      </ng-container>
+
+      <!-- Release Column -->
+      <ng-container matColumnDef="release">
+        <th mat-header-cell *matHeaderCellDef class="block--width-20per100"> Date de realisation </th>
+        <td mat-cell *matCellDef="let element" class="block--width-20per100"> {{element.release}} </td>
+      </ng-container>
+
+      <!-- Players Numbers Column -->
+      <ng-container matColumnDef="nb_player">
+        <th mat-header-cell *matHeaderCellDef class="block--width-20per100"> Nombre de playeurs </th>
+        <td mat-cell *matCellDef="let element" class="block--width-20per100"> {{element.nb_player}} </td>
+      </ng-container>
+
+      <!-- Description Column -->
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef class="block--width-20per100"> Description </th>
+        <td mat-cell *matCellDef="let element" class="block--width-20per100">
+          <p class="text--limitLine text--limitLine-1 block--margin-b-0">
+            {{element.description}}
+          </p>
+        </td>
+      </ng-container>
+
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element">
+          <a [routerLink]="['/watch/'+element.id]" mat-raised-button color="primary" class="block--margin-r-10">
+            Voir plus
+          </a>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[10]" showFirstLastButtons aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+</div>
